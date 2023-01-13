@@ -10,7 +10,23 @@ import { Formik, Form } from "formik";
 import { useSelector } from "react-redux";
 import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
-const loginSchema = {};
+import * as yup from "yup";
+
+const loginSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Please enter a valid email")
+    .required("Please enter an email"),
+  password: yup
+    .string()
+    .min(6, "Password must have min 8 chars")
+    .max(16, "Password must have max 16 chars")
+    .required("Please enter an email")
+    .matches(/[a-z]+/, "Password must have a lowercase")
+    .matches(/[A-Z]+/, "Password must have a uppercase")
+    .matches(/\d+/, "Password must have a number"),
+});
+
 const Login = () => {
   const navigate = useNavigate();
   const { currentUser, error, loading } = useSelector((state) => state?.auth);
