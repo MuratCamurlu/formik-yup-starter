@@ -24,7 +24,8 @@ const loginSchema = yup.object().shape({
     .required("Please enter an email")
     .matches(/[a-z]+/, "Password must have a lowercase")
     .matches(/[A-Z]+/, "Password must have a uppercase")
-    .matches(/\d+/, "Password must have a number"),
+    .matches(/\d+/, "Password must have a number")
+    .matches(/[!,?{}><%&$#£+-.]+/, " Password must have a special char"),
 });
 
 const Login = () => {
