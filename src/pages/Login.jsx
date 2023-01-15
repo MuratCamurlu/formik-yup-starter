@@ -75,7 +75,8 @@ const Login = () => {
             }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-              Login(values);
+              login(values);
+              navigate("/stock");
               actions.resetForm();
               actions.setSubmitting(false);
             }}

@@ -5,7 +5,6 @@ const BASE_URL = "https://clarusway.pythonanywhere.com/";
 
 const useAuthCall = () => {
   const dispatch = useDispatch();
-
   const login = async (userInfo) => {
     dispatch(fetchStart());
     try {
@@ -13,8 +12,7 @@ const useAuthCall = () => {
         `${BASE_URL}account/auth/login/`,
         userInfo
       );
-      dispatch(loginSuccess());
-      return data;
+      dispatch(loginSuccess(data));
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
