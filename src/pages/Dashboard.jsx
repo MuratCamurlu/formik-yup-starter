@@ -6,13 +6,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import useAuthCall from "../hooks/useAuthCall";
+import useAuthCalls from "../hooks/useAuthCalls";
 import { useSelector } from "react-redux";
 import { toastErrorNotify } from "../helper/ToastNotify";
 
 function Dashboard() {
   const { currentUser, error } = useSelector((state) => state.auth);
-  const { logout } = useAuthCall();
+  const { logout } = useAuthCalls();
   useEffect(() => {
     error && toastErrorNotify("Logout can not be performed");
   }, [error]);
